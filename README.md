@@ -74,6 +74,10 @@ python manage.py migrate
 
 ### 5️⃣ Run development server
 
+#### Before running change settings.py For Local
+DEBUG = True
+ALLOWED_HOSTS = []
+
 ```bash
 python manage.py runserver
 ```
