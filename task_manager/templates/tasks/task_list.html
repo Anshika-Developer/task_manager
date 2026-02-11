@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<h3>Task Overview</h3>
+<p>
+    Total: {{ stats.total }} |
+    Completed: {{ stats.completed }} |
+    Pending: {{ stats.pending }}
+</p>
+
+<form method="get">
+    <select name="status">
+        <option value="">All Status</option>
+        <option value="PENDING" {% if status == 'PENDING' %}selected{% endif %}>Pending</option>
+        <option value="COMPLETED" {% if status == 'COMPLETED' %}selected{% endif %}>Completed</option>
+    </select>
+
+    <select name="priority">
+        <option value="">All Priorities</option>
+        <option value="LOW" {% if priority == 'LOW' %}selected{% endif %}>Low</option>
+        <option value="MEDIUM" {% if priority == 'MEDIUM' %}selected{% endif %}>Medium</option>
+        <option value="HIGH" {% if priority == 'HIGH' %}selected{% endif %}>High</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<br>
+
+<a href="{% url 'task_create' %}">➕ Add Task</a>
+
+<hr>
+
+<ul>
+{% for task in tasks %}
+    <li>
+        <strong>{{ task.title }}</strong><br>
+        Status: {{ task.status }} |
+        Priority: {{ task.priority }}<br>
+        <a href="{% url 'task_update' task.id %}">Edit</a> |
+        <a href="{% url 'task_delete' task.id %}">Delete</a>
+    </li>
+{% empty %}
+    <li>No tasks available</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
