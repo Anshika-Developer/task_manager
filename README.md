@@ -3,6 +3,7 @@
   
 This is a Task Manager project built using Django and Django REST Framework.
 
+This will help to Track the Task and there status.
 
 ---
 
