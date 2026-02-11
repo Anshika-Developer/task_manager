@@ -65,7 +65,11 @@
         <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
             <div>
                 <h3 class="text-lg font-semibold text-gray-800">{{ task.title }}</h3>
-
+            {% if task.description %}
+            <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                {{ task.description|truncatechars:150 }}
+            </p>
+            {% endif %}
                 <div class="flex gap-3 mt-2 text-sm">
 
                     {% if task.status == "COMPLETED" %}
